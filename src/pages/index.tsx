@@ -28,100 +28,19 @@ const Home = () => {
     ];
     for (const item of directions) {
       const [a, b] = item;
-      if (
-        board[y + b][x + a] !== undefined &&
-        board[y + b][x + a] === 2 / turnColor &&
-        board[y + (b + 1)][x + (a + 1)] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
+      let X = x + a;
+      let Y = y + b;
+      while (board[Y] !== undefined && board[Y][X] !== undefined)
+        if (board[Y][X] === 2 / turnColor) {
+          Y += b;
+          X += a;
+        } else if (board[Y][X] === turnColor) {
+          newBoard[y][x] = turnColor;
+          setTurnColor(2 / turnColor);
+          break;
+        }
     }
 
-    for (let i = 1; i < board.length; i++) {
-      if (
-        board[y + b] !== undefined &&
-        board[x] !== undefined &&
-        board[y + i][x] === 2 / turnColor &&
-        board[y + (i + 1)][x] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
-    }
-    for (let i = 1; i < board.length; i++) {
-      if (
-        board[y - i] !== undefined &&
-        board[x] !== undefined &&
-        board[y - i][x] === 2 / turnColor &&
-        board[y - (i + 1)][x] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
-    }
-    for (let i = 1; i < board.length; i++) {
-      if (
-        board[x + i] !== undefined &&
-        board[y] !== undefined &&
-        board[y][x + i] === 2 / turnColor &&
-        board[y][x + (i + 1)] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
-    }
-    for (let i = 1; i < board.length; i++) {
-      if (
-        board[x - i] !== undefined &&
-        board[y] !== undefined &&
-        board[y][x - i] === 2 / turnColor &&
-        board[y][x - (i + 1)] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
-    }
-    for (let i = 1; i < board.length; i++) {
-      if (
-        board[y + i][x + i] !== undefined &&
-        board[y + i][x + i] === 2 / turnColor &&
-        board[y + (i + 1)][x + (i + 1)] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
-    }
-    for (let i = 1; i < board.length; i++) {
-      if (
-        board[y + i][x - i] !== undefined &&
-        board[y + i][x - i] === 2 / turnColor &&
-        board[y + (i + 1)][x - (i + 1)] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
-    }
-    for (let i = 1; i < board.length; i++) {
-      if (
-        board[y - i][x + i] !== undefined &&
-        board[y - i][x + i] === 2 / turnColor &&
-        board[y - (i + 1)][x + (i + 1)] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
-    }
-    for (let i = 1; i < board.length; i++) {
-      if (
-        board[y - i][x - i] !== undefined &&
-        board[y - i][x - i] === 2 / turnColor &&
-        board[y - (i + 1)][x - (i + 1)] === turnColor
-      ) {
-        newBoard[y][x] = turnColor;
-        setTurnColor(2 / turnColor);
-      }
-    }
     setBoard(newBoard);
   };
   return (
