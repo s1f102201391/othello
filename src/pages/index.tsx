@@ -16,21 +16,111 @@ const Home = () => {
   const clickHandler = (x: number, y: number) => {
     console.log(x, y);
     const newBoard = structuredClone(board);
-    if (board[y + 1] !== undefined && board[y + 1][x] === 2 / turnColor) {
-      newBoard[y][x] = turnColor;
-      setTurnColor(2 / turnColor);
+    const directions = [
+      [0, 1], //下
+      [0, -1], //上
+      [1, 0], //右
+      [-1, 0], //左
+      [1, 1], //右下
+      [1, -1], //右上
+      [-1, 1], //左下
+      [-1, -1], //左上
+    ];
+    for (const item of directions) {
+      const [a, b] = item;
+      if (
+        board[y + b][x + a] !== undefined &&
+        board[y + b][x + a] === 2 / turnColor &&
+        board[y + (b + 1)][x + (a + 1)] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
     }
-    if (board[y - 1] !== undefined && board[y - 1][x] === 2 / turnColor) {
-      newBoard[y][x] = turnColor;
-      setTurnColor(2 / turnColor);
+
+    for (let i = 1; i < board.length; i++) {
+      if (
+        board[y + b] !== undefined &&
+        board[x] !== undefined &&
+        board[y + i][x] === 2 / turnColor &&
+        board[y + (i + 1)][x] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
     }
-    if (board[x + 1] !== undefined && board[y][x + 1] === 2 / turnColor) {
-      newBoard[y][x] = turnColor;
-      setTurnColor(2 / turnColor);
+    for (let i = 1; i < board.length; i++) {
+      if (
+        board[y - i] !== undefined &&
+        board[x] !== undefined &&
+        board[y - i][x] === 2 / turnColor &&
+        board[y - (i + 1)][x] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
     }
-    if (board[x - 1] !== undefined && board[y][x - 1] === 2 / turnColor) {
-      newBoard[y][x] = turnColor;
-      setTurnColor(2 / turnColor);
+    for (let i = 1; i < board.length; i++) {
+      if (
+        board[x + i] !== undefined &&
+        board[y] !== undefined &&
+        board[y][x + i] === 2 / turnColor &&
+        board[y][x + (i + 1)] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
+    }
+    for (let i = 1; i < board.length; i++) {
+      if (
+        board[x - i] !== undefined &&
+        board[y] !== undefined &&
+        board[y][x - i] === 2 / turnColor &&
+        board[y][x - (i + 1)] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
+    }
+    for (let i = 1; i < board.length; i++) {
+      if (
+        board[y + i][x + i] !== undefined &&
+        board[y + i][x + i] === 2 / turnColor &&
+        board[y + (i + 1)][x + (i + 1)] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
+    }
+    for (let i = 1; i < board.length; i++) {
+      if (
+        board[y + i][x - i] !== undefined &&
+        board[y + i][x - i] === 2 / turnColor &&
+        board[y + (i + 1)][x - (i + 1)] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
+    }
+    for (let i = 1; i < board.length; i++) {
+      if (
+        board[y - i][x + i] !== undefined &&
+        board[y - i][x + i] === 2 / turnColor &&
+        board[y - (i + 1)][x + (i + 1)] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
+    }
+    for (let i = 1; i < board.length; i++) {
+      if (
+        board[y - i][x - i] !== undefined &&
+        board[y - i][x - i] === 2 / turnColor &&
+        board[y - (i + 1)][x - (i + 1)] === turnColor
+      ) {
+        newBoard[y][x] = turnColor;
+        setTurnColor(2 / turnColor);
+      }
     }
     setBoard(newBoard);
   };
