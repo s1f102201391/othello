@@ -13,6 +13,13 @@ const Home = () => {
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
   ]);
+  //候補地
+  const nextClick = (nowTurncolor: number) => {
+    for (let a = 0; a < 8; a++) {
+      for (let b = 0; b < 8; b++) {}
+    }
+  };
+
   const clickHandler = (x: number, y: number) => {
     if (board[y][x] !== 0) return;
     console.log(x, y);
@@ -27,6 +34,7 @@ const Home = () => {
       [-1, 1], //左下
       [-1, -1], //左上
     ];
+    //8方向
     for (const item of directions) {
       const [a, b] = item;
       let X = x + a;
@@ -87,7 +95,9 @@ const Home = () => {
                 <div
                   className={styles.stoneStyle}
                   style={{ background: color === 1 ? '#000' : '#fff' }}
-                />
+                >
+                  <div className={styles.nextPoint} />
+                </div>
               )}
             </div>
           )),

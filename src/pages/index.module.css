@@ -28,3 +28,11 @@
   background: white;
   border-radius: 50%;
 }
+
+.nextPoint {
+  width: 24px;
+  height: 24px;
+  margin: 12px;
+  background: yellow;
+  border-radius: 50%;
+}
