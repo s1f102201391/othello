@@ -25,14 +25,12 @@
   width: 56px;
   height: 56px;
   margin: 12px;
-  background: white;
   border-radius: 50%;
 }
 
 .nextPoint {
   width: 24px;
   height: 24px;
-  margin: 12px;
-  background: yellow;
+  margin: 28px;
   border-radius: 50%;
 }
