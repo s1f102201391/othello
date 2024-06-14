@@ -27,6 +27,7 @@ const Home = () => {
   const newBoard = structuredClone(board);
 
   const nextClick = (nowTurncolor: number) => {
+    let n = 0;
     for (let d = 0; d < 8; d++) {
       for (let c = 0; c < 8; c++) {
         if (newBoard[c][d] === 3) {
@@ -57,6 +58,7 @@ const Home = () => {
                 ) {
                   if (newBoard[c][d] !== 0) return;
                   newBoard[c][d] = 3;
+                  n += 1;
                   break;
                 } else {
                   break;
@@ -66,6 +68,11 @@ const Home = () => {
           }
         }
       }
+    }
+    if (n === 0 && nowTurncolor !== turnColor) {
+      nextClick(2 / nowTurncolor);
+      setTurnColor(2 / nowTurncolor);
+      return;
     }
   };
 
